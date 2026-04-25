@@ -1,26 +1,199 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── Theme tokens ─────────────────────────────────────────────── */
+@theme {
+  --font-family-sans:   var(--font-dm-sans), system-ui, sans-serif;
+  --font-family-serif:  var(--font-dm-serif), Georgia, serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-brand-black:  #0f0f0f;
+  --color-brand-green:  #22c55e;
+  --color-brand-green-dark: #16a34a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --max-width-container: 1200px;
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Vertical scroll — used by testimonial columns */
+@keyframes scrollUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0f0f0f;
+    font-family: var(--font-family-sans);
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ── Component helpers ────────────────────────────────────────── */
+@layer components {
+  /* Navbar */
+  .nav-link {
+    font-family: var(--font-family-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    letter-spacing: 0.01em;
+    transition: color 0.18s ease;
+    position: relative;
+    text-decoration: none;
+  }
+  .nav-link:hover { color: #111827; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: #111827;
+    transition: width 0.22s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .kedil-logo {
+    font-family: var(--font-family-serif);
+    font-size: 1.45rem;
+    color: #111827;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .dropdown-enter {
+    animation: dropIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes dropIn {
+    from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+  }
+
+  .mobile-slide {
+    animation: slideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #111827;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    transform-origin: center;
+  }
+  .burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .container-main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    max-width: var(--max-width-container);
+  }
+
+  @media (min-width: 768px) {
+    .container-main {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Dark CTA — used for most section CTAs */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background-color: #1f1f1f; }
+
+  /* Green CTA — hero and nav */
+  .btn-green {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    background-color: #22c55e;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+  .btn-green:hover { background-color: #16a34a; }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+  }
+
+  /* Scroll-triggered entrance animations */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-animate][data-delay="1"] { transition-delay: 0.1s; }
+  [data-animate][data-delay="2"] { transition-delay: 0.2s; }
+  [data-animate][data-delay="3"] { transition-delay: 0.3s; }
+  [data-animate][data-delay="4"] { transition-delay: 0.4s; }
+  [data-animate][data-delay="5"] { transition-delay: 0.5s; }
+
+  /* Testimonial column — receives inline animation-duration override */
+  .testimonial-col {
+    animation: scrollUp linear infinite;
+    animation-play-state: running;
+  }
+
+  .testimonial-col:hover {
+    animation-play-state: paused;
+  }
 }
