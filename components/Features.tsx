@@ -49,13 +49,13 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="bg-[#f9f9f9] py-24 md:py-32">
+    <section className="py-24 md:py-32">
       <div className="container-main">
         {/* Header */}
         <div className="text-center mb-14 md:mb-20">
           <p className="section-eyebrow mb-4" data-animate>More features</p>
           <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f]" data-animate data-delay="1">
-            &hellip; and more additional features
+            &hellip; and more <span className="text-[#22c55e]">additional</span> features
           </h2>
         </div>
 
@@ -70,7 +70,7 @@ export default function Features() {
                 i === 4 ? "lg:col-start-2" : ""
               }`}
             >
-              <div className="w-11 h-11 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700">
+              <div className="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center text-[#22c55e]">
                 {feature.icon}
               </div>
               <div>

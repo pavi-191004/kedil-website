@@ -29,13 +29,13 @@ const cards = [
 
 export default function DesignedFor() {
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-24 md:py-32">
       <div className="container-main">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 md:mb-20">
           <p className="section-eyebrow mb-4">Designed for</p>
           <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5">
-            Designed for the People who seeks for clarity
+            Designed for the <span className="text-[#22c55e]">People</span> who seeks for clarity
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
             Kedil is built for people who already manage money and want a

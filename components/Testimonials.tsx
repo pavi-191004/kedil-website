@@ -108,12 +108,12 @@ function Column({
 
 export default function Testimonials() {
   return (
-    <section className="py-24 md:py-32 bg-[#f9f9f9]">
+    <section className="py-24 md:py-32">
       {/* Header */}
       <div className="container-main text-center mb-14 md:mb-20">
         <p className="section-eyebrow mb-4" data-animate>Testimonials</p>
         <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5" data-animate data-delay="1">
-          Clarity Changes How People Feel About Money
+          Clarity <span className="text-[#22c55e]">Changes</span> How People Feel About Money
         </h2>
         <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed" data-animate data-delay="2">
           What early users noticed once everything was visible in one place.

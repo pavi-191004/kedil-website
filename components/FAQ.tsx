@@ -35,22 +35,6 @@ const faqs = [
   },
 ];
 
-function ChevronIcon({ open }: { open: boolean }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      className={`w-5 h-5 shrink-0 text-gray-400 transition-transform duration-300 ${
-        open ? "rotate-180" : ""
-      }`}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  );
-}
-
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -59,42 +43,44 @@ export default function FAQ() {
   }
 
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-24 md:py-32">
       <div className="container-main">
         {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-14 md:mb-20">
-          <p className="section-eyebrow mb-4">FAQ</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5">
-            Still have Questions?
+        <div className="text-center max-w-xl mx-auto mb-14 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5" data-animate>
+            Still have <span className="text-[#22c55e]">Questions?</span>
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-gray-500 leading-relaxed" data-animate data-delay="1">
             Clear answers to common questions, simplifying your experience
             instantly.
           </p>
         </div>
 
-        {/* Accordion */}
-        <div className="max-w-2xl mx-auto divide-y divide-gray-100 border-t border-gray-100">
+        {/* Card-style accordion */}
+        <div className="max-w-2xl mx-auto flex flex-col gap-3">
           {faqs.map((faq, i) => (
-            <div key={i}>
+            <div
+              key={i}
+              className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+            >
               <button
                 onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer bg-transparent border-none"
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer bg-transparent border-none"
               >
                 <span className="text-base font-medium text-[#0f0f0f]">
                   {faq.question}
                 </span>
-                <ChevronIcon open={openIndex === i} />
+                <span className="shrink-0 w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 text-lg leading-none transition-transform duration-200">
+                  {openIndex === i ? "−" : "+"}
+                </span>
               </button>
 
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === i
-                    ? "max-h-64 opacity-100 pb-5"
-                    : "max-h-0 opacity-0"
+                  openIndex === i ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed px-6 pb-5">
                   {faq.answer}
                 </p>
               </div>
