@@ -108,7 +108,7 @@ function Column({
 
 export default function Testimonials() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 bg-[#f5f5f3]">
       {/* Header */}
       <div className="container-main text-center mb-14 md:mb-20">
         <p className="section-eyebrow mb-4" data-animate>Testimonials</p>

@@ -29,15 +29,15 @@ const cards = [
 
 export default function DesignedFor() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 bg-[#f5f5f3]">
       <div className="container-main">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 md:mb-20">
-          <p className="section-eyebrow mb-4">Designed for</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5">
+          <p className="section-eyebrow mb-4" data-animate>Designed for</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5" data-animate data-delay="1">
             Designed for the <span className="text-[#22c55e]">People</span> who seeks for clarity
           </h2>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-gray-500 leading-relaxed" data-animate data-delay="2">
             Kedil is built for people who already manage money and want a
             calmer, more reliable way to stay on track.
           </p>
@@ -45,9 +45,11 @@ export default function DesignedFor() {
 
         {/* 2×2 grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {cards.map((card) => (
+          {cards.map((card, i: number) => (
             <div
               key={card.title}
+              data-animate
+              data-delay={String((i % 2) + 1)}
               className="group rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-xl hover:shadow-black/5 transition-all duration-300"
             >
               {/* Image */}

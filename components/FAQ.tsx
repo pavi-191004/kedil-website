@@ -43,7 +43,7 @@ export default function FAQ() {
   }
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 bg-[#f5f5f3]">
       <div className="container-main">
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-14 md:mb-16">
@@ -61,6 +61,8 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
+              data-animate
+              data-delay={String((i % 3) + 1)}
               className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
             >
               <button

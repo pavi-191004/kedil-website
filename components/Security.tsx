@@ -44,7 +44,7 @@ const bullets = [
 
 export default function Security() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32 bg-[#f5f5f3]">
       <div className="container-main">
         <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-[#0f0f0f] mb-5 leading-tight" data-animate>

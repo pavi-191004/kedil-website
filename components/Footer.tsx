@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="bg-[#f5f5f3] px-4 md:px-8 pt-3 pb-6">
@@ -8,28 +10,13 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
             {/* Logo */}
             <a href="/" className="flex items-center gap-2.5 select-none">
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
-                  backgroundColor: "#22c55e",
-                  flexShrink: 0,
-                }}
-              >
-                <svg viewBox="0 0 20 20" fill="none" width={17} height={17}>
-                  <path
-                    d="M5.5 4 A6.5 6.5 0 1 0 14.5 4"
-                    stroke="white"
-                    strokeWidth="2.6"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-              </span>
+              <Image
+                src="/app_logo.png"
+                alt="Kedil"
+                width={36}
+                height={36}
+                className="shrink-0"
+              />
               <span
                 style={{
                   fontFamily: "var(--font-dm-serif), Georgia, serif",
