@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const CALCULATORS = [
- { label: "Prepay vs Invest Calculator" },
-  { label: "Rent vs Buy Calculator" },
+  { label: "Prepay vs Invest Calculator", href: "/calculators/prepay-vs-invest" },
+  { label: "Rent vs Buy Calculator", href: "/calculators/rent-vs-buy/" },
 ];
 
 export default function Navbar() {
@@ -77,12 +77,14 @@ export default function Navbar() {
                     <div className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-white border-l border-t border-gray-100 rotate-45" />
                     <div className="py-2">
                       {CALCULATORS.map((item) => (
-                        <button
+                        <Link
                           key={item.label}
+                          href={item.href}
+                          onClick={() => setCalcOpen(false)}
                           className="w-full text-left px-4 py-2.5 flex flex-col gap-0.5 hover:bg-gray-50 transition-colors duration-100 cursor-pointer"
                         >
                           <span className="text-[0.875rem] font-medium text-gray-800">{item.label}</span>
-                        </button>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -135,12 +137,14 @@ export default function Navbar() {
             Calculators
           </p>
           {CALCULATORS.map((item) => (
-            <button
+            <Link
               key={item.label}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
               className="text-left px-1 py-2 text-[0.9rem] text-gray-600 font-medium hover:text-gray-900 transition-colors"
             >
               {item.label}
-            </button>
+            </Link>
           ))}
 
           <div className="my-2 h-px bg-gray-100" />

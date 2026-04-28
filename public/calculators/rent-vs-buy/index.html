@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rent vs Buy Calculator India — Kedil</title>
+  <meta name="description" content="Should you buy a home or rent and invest the difference? Enter your city, loan details, and rent — Kedil shows you the net wealth outcome over 10–30 years. Free."/>
+  <meta name="keywords" content="rent vs buy calculator India, should I buy a house in India, rent or buy home India, home buying decision India, property vs mutual fund India"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://kedil.money/calculators/rent-vs-buy"/>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Rent vs Buy Calculator India — Kedil",
+      "url": "https://kedil.money/calculators/rent-vs-buy",
+      "description": "Should you buy a home or rent and invest the difference? Compare net wealth over 10–30 years with Indian tax context, city-specific appreciation data, and real EMI numbers.",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Kedil",
+        "url": "https://kedil.money"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kedil.money" },
+        { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://kedil.money/calculators" },
+        { "@type": "ListItem", "position": 3, "name": "Rent vs Buy Calculator", "item": "https://kedil.money/calculators/rent-vs-buy" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should I buy a house or rent and invest in India in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no universal answer. It depends on your city, property price, loan terms, and how long you plan to stay. In many Indian metros, if EMI is more than 1.5x equivalent rent, renting and investing the difference can produce higher net wealth over 15 to 20 years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is property a good investment in India compared to mutual funds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Over the last 20 years, Nifty 50 TRI has returned about 13% CAGR. Residential property in many Indian cities has appreciated around 4 to 6% CAGR over similar periods, excluding rental income."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What property appreciation rate should I use for the rent vs buy calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For metros like Mumbai, Bengaluru, Hyderabad, and Chennai, 5 to 6% is a practical long-term assumption. For many Tier 2 cities, 3 to 5% is more realistic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which tax regime does the Kedil rent vs buy calculator use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The calculator can model Section 24 and 80C benefits under the old regime. If you are on the new regime, switch to New Regime in the tax section to remove those deductions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does prepaying my home loan change the rent vs buy calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Part-prepayments reduce interest burden and tenure, improving the buying side. Use Kedil's Prepay vs Invest calculator for that decision directly."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+/* ─────────────────────────────────────────
+   KEDIL DESIGN TOKENS
+───────────────────────────────────────── */
+:root {
+  /* Brand */
+  --green-50:  #EDFBF3;
+  --green-100: #D1F5E2;
+  --green-200: #A3EBC5;
+  --green-500: #23A666;
+  --green-600: #1B8F57;
+  --green-700: #166E44;
+
+  /* Neutrals */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F9F9F9;
+  --neutral-100: #F2F2F2;
+  --neutral-200: #E5E5E5;
+  --neutral-300: #D1D1D1;
+  --neutral-400: #A3A3A3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+
+  /* Surfaces L0–L3 */
+  --bg-page:   #F5F5F5;
+  --bg-card:   #FFFFFF;
+  --bg-inner:  #F9F9F9;
+  --bg-input:  #F2F2F2;
+
+  /* Borders */
+  --border-subtle:  #F2F2F2;
+  --border-default: #E5E5E5;
+  --border-strong:  #D1D1D1;
+
+  /* Content */
+  --text-primary:   #171717;
+  --text-secondary: #525252;
+  --text-tertiary:  #A3A3A3;
+
+  /* Semantic — Positive */
+  --positive-base:   #23A666;
+  --positive-bg:     #EDFBF3;
+  --positive-border: #A3EBC5;
+
+  /* Semantic — Negative */
+  --negative-base: #DC2626;
+  --negative-bg:   #FEF2F2;
+
+  /* Semantic — Notice */
+  --notice-base:   #D97706;
+  --notice-bg:     #FFFBEB;
+  --notice-border: #FDE68A;
+
+  /* colorAccentInvest — Muted teal, scoped to Rent+Invest side only.
+     Distinct from body text (#171717), complements brand green,
+     professional without being "AI purple/blue" */
+  --invest:        #7D8C5A;
+  --invest-mid:    #6A7A4A;
+  --invest-muted:  #B0BC90;
+
+  --r-sm:   6px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-xl:   16px;
+  --r-full: 9999px;
+}
+
+/* .rs = rupee symbol span — font stack chosen for correct two-bar ₹ glyph */
+.rs {
+  font-family: 'Mukta', 'Hind', 'Nirmala UI', 'Segoe UI', Arial, sans-serif;
+  font-style: normal;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Accessibility — focus rings ── */
+button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 2px;
+}
+input[type=range]:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 4px;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sticky Header ── */
+.app-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-default);
+  padding: 14px 32px;
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.breadcrumb-current {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.app-header .app-title {
+  font-size: 17px; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -0.01em;
+}
+.app-header p { font-size: 12px; color: var(--text-tertiary); margin-top: 1px; }
+.header-badge {
+  font-size: 11px; font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-inner);
+  border: 1px solid var(--border-default);
+  padding: 3px 10px; border-radius: var(--r-full);
+}
+
+/* ── Page Layout ── */
+.app-body {
+  max-width: 1200px; margin: 0 auto;
+  padding: 24px 32px 56px;
+  display: flex; gap: 24px; align-items: flex-start;
+}
+
+/* ── Left Panel ── */
+.left-panel {
+  width: 336px; flex-shrink: 0;
+  position: sticky; top: 64px;
+  max-height: calc(100vh - 84px); overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--border-default) transparent;
+}
+.left-panel::-webkit-scrollbar { width: 3px; }
+.left-panel::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 4px; }
+
+/* ── Right Panel ── */
+.right-panel { flex: 1; min-width: 0; }
+
+/* ── Section Card — L1 surface, single border ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  margin-bottom: 10px;
+  transition: border-color 0.15s;
+}
+.card:focus-within { border-color: var(--border-strong); }
+
+/* ── Section Label — icon + ALL CAPS label ── */
+.sec-label {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 18px;
+}
+.sec-label span:last-child {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ── Field ── */
+.field { margin-bottom: 20px; }
+.field:last-child { margin-bottom: 0; }
+.field-row {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 6px;
+}
+.field-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+.field-badge {
+  font-size: 11px; font-weight: 600; color: var(--green-600);
+  /* NO bg, NO border — just a colored text tag */
+}
+.field-hint { font-size: 11px; color: var(--text-tertiary); margin-top: 5px; line-height: 1.4; }
+
+/* ── Inline editable number ── */
+.num-wrap {
+  display: inline-flex; align-items: baseline; gap: 2px;
+  border-bottom: 1.5px solid var(--border-default);
+  padding-bottom: 3px; transition: border-color 0.15s;
+}
+.num-wrap.focused { border-color: var(--green-500); }
+.num-prefix { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.num-wrap input {
+  border: none; outline: none; background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--text-primary);
+  cursor: pointer;
+}
+.num-wrap input:focus { cursor: text; }
+.num-suffix { font-size: 12px; font-weight: 500; color: var(--text-tertiary); }
+
+/* ── Range Slider ── */
+input[type=range] {
+  width: 100%; accent-color: var(--green-500);
+  margin: 8px 0 0; cursor: pointer; height: 4px;
+}
+
+/* ── Chips — FIX: no tinted fill, no colored border on default state ── */
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.chip {
+  padding: 4px 11px; border-radius: var(--r-full);
+  /* Default: plain neutral — no green border, no tint */
+  border: 1px solid var(--border-default);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: all 0.1s;
+  white-space: nowrap;
+}
+.chip:hover { border-color: var(--border-strong); color: var(--text-primary); }
+/* Active state: solid fill — not outline+tint */
+.chip.active {
+  background: var(--neutral-900);
+  border-color: var(--neutral-900);
+  color: #fff;
+}
+/* City chips stay green because city IS brand-primary action */
+.chip.city-chip.active {
+  background: var(--green-500);
+  border-color: var(--green-500);
+  color: #fff;
+}
+
+/* ── Segment control ── */
+.segment {
+  display: inline-flex;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-full); padding: 2px;
+}
+.segment button {
+  padding: 4px 12px; border-radius: var(--r-full); border: none;
+  background: transparent; color: var(--text-tertiary);
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: all 0.1s;
+}
+.segment button.active {
+  background: var(--bg-card); color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ── Risk Options — FIX: no tinted-box AI pattern ── */
+.risk-options { display: flex; flex-direction: column; gap: 1px; margin-top: 6px; }
+.risk-option {
+  /* Plain row — no box, no tint */
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--r-md);
+  border: 1px solid transparent;
+  background: transparent; cursor: pointer;
+  text-align: left; font-family: 'DM Sans', sans-serif;
+  transition: background 0.1s;
+  width: 100%;
+}
+.risk-option:hover { background: var(--bg-inner); }
+.risk-option.active {
+  /* Active: just a left border line + very subtle bg — not the tinted box */
+  background: var(--bg-inner);
+  border-color: var(--border-default);
+  border-left: 3px solid var(--green-500);
+}
+.risk-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  background: var(--border-default);
+}
+.risk-option.active .risk-dot { background: var(--green-500); }
+.risk-text .risk-name {
+  font-size: 13px; font-weight: 600; color: var(--text-primary);
+}
+.risk-text .risk-desc { font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
+
+/* ── City input ── */
+.city-wrap { position: relative; }
+.city-input {
+  width: 100%; border: none;
+  border-bottom: 1.5px solid var(--border-default);
+  background: transparent; font-size: 14px; font-weight: 600;
+  color: var(--text-primary); padding: 5px 0; outline: none;
+  font-family: 'DM Sans', sans-serif; transition: border-color 0.15s;
+  margin-bottom: 10px;
+}
+.city-input:focus { border-color: var(--green-500); }
+.city-input::placeholder { color: var(--text-tertiary); font-weight: 400; }
+.city-dropdown {
+  position: absolute; top: calc(100% - 4px); left: 0; right: 0;
+  background: var(--bg-card); border: 1px solid var(--border-default);
+  border-radius: var(--r-lg); box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  z-index: 50; max-height: 220px; overflow-y: auto; display: none;
+}
+.city-dropdown.open { display: block; }
+.city-item {
+  padding: 9px 14px; cursor: pointer; font-size: 13px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.08s;
+}
+.city-item:last-child { border-bottom: none; }
+.city-item:hover { background: var(--bg-inner); }
+.city-name { font-weight: 600; color: var(--text-primary); }
+.city-meta { font-size: 11px; color: var(--text-tertiary); }
+
+/* ── EMI Preview — inline, not a tinted box ── */
+.emi-preview {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+.emi-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+.emi-value { font-size: 22px; font-weight: 800; color: var(--green-600); }
+.emi-value span { font-size: 11px; font-weight: 500; color: var(--text-tertiary); }
+
+/* ── Adv toggle ── */
+.adv-toggle {
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: var(--green-500);
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'DM Sans', sans-serif; padding: 0; margin-top: 4px;
+}
+.adv-section { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-subtle); display: none; }
+.adv-section.open { display: block; }
+
+/* ── Notice inline ── */
+.inline-notice {
+  font-size: 11px; color: #7C2D8E; line-height: 1.5;
+  margin-top: 8px; padding: 0;
+  /* NO box, no bg, no border — just colored text */
+}
+
+/* ═══════════════════════════════════════════
+   RIGHT PANEL
+═══════════════════════════════════════════ */
+
+/* ── Verdict Banner — FIX: plain card, no tinted bg, no colored border ── */
+.verdict-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-xl); padding: 22px 24px; margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+}
+.verdict-top {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; margin-bottom: 18px;
+  gap: 12px;
+}
+.verdict-main { flex: 1; }
+.verdict-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 6px;
+}
+.verdict-pill-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #E07B00; flex-shrink: 0;
+}
+.verdict-pill-dot.invest-dot { background: var(--invest); }
+.verdict-pill-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-secondary);
+}
+/* Hero number — 36px/800 per Kedil number hierarchy */
+.verdict-hero {
+  font-size: 36px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.025em; line-height: 1;
+  transition: color 0.2s ease;
+}
+.verdict-hero-sub {
+  font-size: 14px; font-weight: 500; color: var(--text-tertiary); margin-left: 8px;
+}
+.verdict-breakeven {
+  flex-shrink: 0; text-align: right;
+}
+.be-label { font-size: 11px; color: var(--text-tertiary); }
+.be-year { font-size: 18px; font-weight: 700; color: #7C2D8E; }
+
+/* Progress bar — two segments: green (Buy) + dark (Rent+Invest) */
+.verdict-bar-track {
+  height: 6px; border-radius: var(--r-full);
+  overflow: hidden; margin-bottom: 8px;
+  display: flex;
+}
+.verdict-bar-buy {
+  height: 100%; background: #E07B00;
+  transition: width 0.4s ease; flex-shrink: 0;
+}
+.verdict-bar-invest {
+  height: 100%; background: var(--invest);
+  flex: 1;
+}
+.verdict-row {
+  display: flex; justify-content: space-between;
+}
+/* FIX: both sides use same text-primary for numbers, role label distinguishes */
+.verdict-side { display: flex; align-items: center; gap: 5px; }
+.verdict-side-dot {
+  display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.verdict-side-icon { font-size: 13px; }
+.verdict-side-label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; }
+.verdict-side-amt { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-left: 4px; }
+.verdict-side-amt.winner        { color: #E07B00; }   /* Buy wins */
+.verdict-side-amt.winner-invest { color: var(--invest); }      /* Rent wins */
+
+/* ── Snapshot Cards — FIX: no tray fill boxes, use inline rows ── */
+.snapshot-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;
+}
+.snapshot-card {
+  background: var(--bg-card); border: 1px solid var(--border-default);
+  border-radius: var(--r-lg); padding: 20px 22px;
+}
+.snapshot-section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px;
+}
+/* Primary number — 28px/800 per hierarchy */
+.snapshot-number {
+  font-size: 28px; font-weight: 800; color: var(--text-primary);
+  letter-spacing: -0.02em; line-height: 1.1;
+}
+.snapshot-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 3px; }
+.snap-divider { height: 1px; background: var(--border-subtle); margin: 14px 0; }
+/* Inline data rows — no boxes */
+.snap-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.snap-row:last-child { margin-bottom: 0; }
+.snap-item-label { font-size: 11px; color: var(--text-tertiary); margin-bottom: 2px; }
+/* Supporting numbers — 15px/700 per hierarchy */
+.snap-item-val { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.snap-item-val.positive { color: #E07B00; }
+.snap-item-val.muted { color: var(--text-secondary); }
+
+/* ── Chart Card ── */
+.chart-card {
+  background: var(--bg-card); border: 1px solid var(--border-default);
+  border-radius: var(--r-lg); padding: 20px 22px; margin-bottom: 10px;
+}
+.chart-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 14px;
+}
+.chart-legend {
+  display: flex; gap: 20px; justify-content: center; margin-top: 8px;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--text-tertiary);
+}
+.legend-line { width: 16px; height: 2.5px; border-radius: 2px; }
+.crossover-note {
+  font-size: 12px; line-height: 1.5; margin-top: 10px;
+  color: #7C2D8E;
+}
+.crossover-note.positive-note { color: #7D8C5A; }
+
+/* ── After Years — FIX: remove tray boxes, use divider rows ── */
+.after-card {
+  background: var(--bg-card); border: 1px solid var(--border-default);
+  border-radius: var(--r-lg); padding: 22px; margin-bottom: 10px;
+}
+.after-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 20px;
+}
+.after-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.after-col { padding: 0 20px 0 0; }
+.after-col:last-child { padding: 0 0 0 20px; border-left: 1px solid var(--border-subtle); }
+.after-col-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.after-col-bar {
+  width: 3px; height: 20px; border-radius: 2px; flex-shrink: 0;
+}
+.after-col-icon {
+  width: 26px; height: 26px; border-radius: var(--r-full);
+  background: var(--bg-inner);
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.after-col-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+
+/* After years grid — row-pair layout for perfect height alignment */
+.after-header-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  margin-bottom: 4px;
+}
+.after-col-header { display: flex; align-items: center; gap: 10px; padding: 0 20px 16px 0; }
+.after-col-header-right { padding: 0 0 16px 20px; border-left: 1px solid var(--border-subtle); }
+.after-row-pair {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.after-row-pair:last-child { border-bottom: none; }
+.after-row-hero { }
+.after-cell {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 14px 20px 14px 0;
+}
+.after-cell-right {
+  padding: 14px 0 14px 20px;
+  border-left: 1px solid var(--border-subtle);
+}
+.stat-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  min-height: 62px; /* fixed minimum so rows always match height */
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-row-label { font-size: 12px; color: var(--text-tertiary); font-weight: 500; line-height: 1.4; max-width: 45%; padding-top: 1px; }
+.stat-row-right { text-align: right; }
+/* Primary metric — 18px/700 */
+.stat-row-val {
+  font-size: 18px; font-weight: 700; color: var(--text-primary);
+  line-height: 1.2; transition: color 0.2s ease;
+}
+.stat-row-val.positive    { color: #E07B00; }
+.stat-row-val.invest-win  { color: var(--invest); }   /* Teal: Rent+Invest wins */
+/* Sub text under value */
+.stat-row-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; line-height: 1.3; }
+
+/* Net Wealth row — hero treatment */
+.stat-row.hero { min-height: 72px; }
+.stat-row.hero .stat-row-val { font-size: 22px; font-weight: 800; }
+
+/* ── Methodology ── */
+.methodology { font-size: 11px; color: var(--text-tertiary); line-height: 1.7; padding: 0 2px; margin-bottom: 32px; }
+.methodology strong { color: var(--text-secondary); }
+
+/* ── SEO Content Blocks ── */
+.hero-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 6px;
+}
+.hero-card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+.hero-card h1 {
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+.hero-card p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  max-width: 920px;
+}
+.content-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 56px;
+}
+.content-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  margin-bottom: 10px;
+}
+.content-card h2 {
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.content-card h3 {
+  font-size: 15px;
+  margin: 16px 0 8px;
+}
+.content-card p {
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.content-card ul,
+.content-card ol {
+  margin-left: 18px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.content-card li { margin-bottom: 8px; }
+.section-white { background: #fff; }
+.section-plain {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 28px;
+}
+.steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  counter-reset: step;
+}
+.steps-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  counter-increment: step;
+}
+.steps-list li::before {
+  content: counter(step);
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #E6F5ED;
+  color: #157A49;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 13px;
+}
+.section-plain h3 { font-size: 16px; margin: 16px 0 8px; font-weight: 600; color: #1A1A1A; }
+.section-plain h2 { margin-bottom: 14px; }
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  padding: 0 16px;
+  margin: 0 0 12px;
+}
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  padding: 14px 0;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary .faq-arrow {
+  color: #5C5C5C;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.faq-item[open] summary .faq-arrow { transform: rotate(180deg); }
+.faq-item p {
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.other-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.tool-card {
+  background: #fff;
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 18px;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+.tool-card-title {
+  font-weight: 800;
+  color: #1A1A1A;
+  margin-bottom: 6px;
+}
+.tool-card-copy {
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.aeo-note {
+  background: #fffdf1;
+  border: 1px solid #f4e6b0;
+  border-radius: var(--r-md);
+  padding: 12px;
+  color: #5c4a00;
+  margin-top: 12px;
+}
+.other-tools a { color: var(--green-600); font-weight: 600; text-decoration: none; }
+.other-tools a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .hero-wrap,
+  .content-wrap { padding: 16px 16px 42px; }
+  .hero-wrap { padding-bottom: 8px; }
+  .hero-card h1 { font-size: 27px; }
+  .other-tools-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.right-panel > * { animation: fadeUp 0.2s ease both; }
+.right-panel > *:nth-child(2) { animation-delay: 0.04s; }
+.right-panel > *:nth-child(3) { animation-delay: 0.08s; }
+.right-panel > *:nth-child(4) { animation-delay: 0.12s; }
+.right-panel > *:nth-child(5) { animation-delay: 0.16s; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .app-body { flex-direction: column; padding: 16px; }
+  .left-panel { width: 100%; position: static; max-height: none; }
+  .snapshot-grid { grid-template-columns: 1fr; }
+  .after-grid { grid-template-columns: 1fr; }
+  .after-col { padding: 0; border-left: none; margin-bottom: 20px; }
+  .after-col:last-child { padding: 0; border-left: none; border-top: 1px solid var(--border-subtle); padding-top: 20px; }
+}
+/* ── Chart Tooltip ── */
+.chart-tooltip{position:absolute;pointer-events:none;display:none;background:#1a1a1a;color:#fff;border-radius:8px;padding:10px 14px;font-family:"DM Sans",sans-serif;font-size:12px;line-height:1.6;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:200}
+.chart-tooltip .tt-yr{font-size:11px;color:#999;margin-bottom:5px;font-weight:600}
+.chart-tooltip .tt-row{display:flex;align-items:center;gap:7px;margin-top:2px}
+.chart-tooltip .tt-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.chart-tooltip .tt-lbl{color:#bbb;font-size:11px}
+.chart-tooltip .tt-v{font-weight:700;margin-left:auto;padding-left:12px}
+  </style>
+</head>
+<body>
+<!-- ── Header with Logo ── -->
+<div style="background: var(--bg-card); border-bottom: 1px solid var(--border-default); padding: 12px 0;">
+  <div style="max-width: 1040px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 26px; height: 26px; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--bg-card); border: 1px solid var(--border-default);">
+        <img src="/app_logo.png" alt="Kedil logo" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <span style="font-size: 14px; font-weight: 700;">Kedil</span>
+      <span style="font-size: 10px; color: var(--text-tertiary); background: var(--green-50); padding: 2px 7px; border-radius: 8px; font-weight: 600;">Tools</span>
+    </div>
+    <a href="https://app.kedil.money" style="font-size: 12px; color: var(--green-500); font-weight: 600; text-decoration: none;">Open App →</a>
+  </div>
+</div>
+
+<!-- ── Header with Breadcrumb ── -->
+<header class="app-header">
+  <div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/calculators">Calculators</a>
+      <span aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Rent vs Buy Calculator</span>
+    </nav>
+    <div class="app-title">Rent vs Buy Calculator India</div>
+    <p>Find out if buying a home makes financial sense right now — or if renting and investing gets you further.</p>
+  </div>
+  <span class="header-badge">Indian tax context included</span>
+</header>
+
+<section class="hero-wrap" aria-label="Rent vs Buy Hero">
+  <div class="hero-card">
+    <h1>Rent vs Buy Calculator for India</h1>
+    <p>Enter your numbers. See which puts more money in your hands: buying a home or staying on rent and investing the difference. Built around Indian tax rules, city-specific rent data, and realistic property appreciation rates.</p>
+  </div>
+</section>
+
+<div class="app-body">
+
+<!-- ════════════════ LEFT PANEL ════════════════ -->
+<div class="left-panel" id="leftPanel">
+
+  <!-- City -->
+  <div class="card">
+    <div class="field">
+      <div class="field-row"><span class="field-label">City</span></div>
+      <div class="city-wrap" id="cityWrap">
+        <input class="city-input" id="cityInput" placeholder="Search city…" autocomplete="off"/>
+        <div class="city-dropdown" id="cityDropdown"></div>
+      </div>
+      <div class="chips" id="popularChips"></div>
+    </div>
+  </div>
+
+  <!-- Property Details -->
+  <div class="card">
+    <div class="sec-label"><span>🏠</span><span>Property Details</span></div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Property Price</span></div>
+      <div class="num-wrap" id="priceWrap">
+        <span class="num-prefix rs">₹</span>
+        <input id="priceInput" style="width:160px"/>
+      </div>
+      <div class="chips" id="priceChips"></div>
+    </div>
+
+    <div class="field">
+      <div class="field-row">
+        <span class="field-label">Down Payment</span>
+        <span class="field-badge" id="dpBadge"></span>
+      </div>
+      <div class="num-wrap" id="dpWrap">
+        <input id="dpInput" style="width:45px"/>
+        <span class="num-suffix">%</span>
+      </div>
+      <input type="range" id="dpSlider" min="5" max="50" step="1"/>
+      <div class="field-hint">Banks typically require 10–20% minimum</div>
+    </div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Loan Interest Rate</span></div>
+      <div class="num-wrap" id="rateWrap">
+        <input id="rateInput" style="width:50px"/>
+        <span class="num-suffix">% p.a.</span>
+      </div>
+      <input type="range" id="rateSlider" min="6" max="14" step="0.1"/>
+      <div class="field-hint">Check your bank's current home loan rate</div>
+    </div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Loan Tenure</span></div>
+      <div class="num-wrap" id="tenureWrap">
+        <input id="tenureInput" style="width:40px"/>
+        <span class="num-suffix">yrs</span>
+      </div>
+      <input type="range" id="tenureSlider" min="5" max="30" step="1"/>
+    </div>
+
+    <div class="emi-preview">
+      <span class="emi-label">Monthly EMI</span>
+      <span class="emi-value" id="emiDisplay">—<span> /mo</span></span>
+    </div>
+
+    <div class="field">
+      <div class="field-row">
+        <span class="field-label">Property Appreciation</span>
+        <span class="field-badge" id="appreBadge"></span>
+      </div>
+      <div class="num-wrap" id="appreWrap">
+        <input id="appreInput" style="width:45px"/>
+        <span class="num-suffix">% / yr</span>
+      </div>
+      <input type="range" id="appreSlider" min="0" max="15" step="0.5"/>
+      <div class="field-hint" id="appreSrc"></div>
+    </div>
+
+    <button class="adv-toggle" id="advToggle">▸ Customize defaults</button>
+    <div class="adv-section" id="advSection">
+      <div class="field">
+        <div class="field-row"><span class="field-label">Stamp Duty & Registration</span></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+          <div class="num-wrap" id="stampWrap">
+            <span class="num-prefix rs" id="stampPrefix"></span>
+            <input id="stampInput" style="width:55px"/>
+            <span class="num-suffix" id="stampSuffix">%</span>
+          </div>
+          <div class="segment" id="stampSegment">
+            <button data-v="pct" class="active">%</button>
+            <button data-v="amt">₹</button>
+          </div>
+        </div>
+        <div class="field-hint">Verify with local sub-registrar</div>
+      </div>
+      <div class="field">
+        <div class="field-row"><span class="field-label">Monthly Maintenance</span></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+          <div class="num-wrap" id="maintWrap">
+            <span class="num-prefix rs" id="maintPrefix">₹</span>
+            <input id="maintInput" style="width:85px"/>
+            <span class="num-suffix" id="maintSuffix"></span>
+          </div>
+          <div class="segment" id="maintSegment">
+            <button data-v="amt" class="active">₹</button>
+            <button data-v="pct">%</button>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-row"><span class="field-label">Maintenance Increase p.a.</span></div>
+        <div class="num-wrap" id="maintUpWrap">
+          <input id="maintUpInput" style="width:40px"/>
+          <span class="num-suffix">%</span>
+        </div>
+        <input type="range" id="maintUpSlider" min="0" max="10" step="1"/>
+        <div class="chips">
+          <button class="chip" onclick="setVal('maintUp',3)">3%</button>
+          <button class="chip" onclick="setVal('maintUp',5)">5%</button>
+          <button class="chip" onclick="setVal('maintUp',7)">7%</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rental & Investment -->
+  <div class="card">
+    <div class="sec-label"><span>📈</span><span>Rental & Investment</span></div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Monthly Rent</span></div>
+      <div class="num-wrap" id="rentWrap">
+        <span class="num-prefix rs">₹</span>
+        <input id="rentInput" style="width:105px"/>
+      </div>
+      <div class="chips" id="rentChips"></div>
+    </div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Annual Rent Increase</span></div>
+      <div class="num-wrap" id="rentUpWrap">
+        <input id="rentUpInput" style="width:40px"/>
+        <span class="num-suffix">%</span>
+      </div>
+      <input type="range" id="rentUpSlider" min="0" max="15" step="1"/>
+      <div class="field-hint">Urban rental inflation avg 8–10% p.a.</div>
+    </div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Investment Risk Profile</span></div>
+      <div class="risk-options" id="riskOptions"></div>
+    </div>
+
+    <div class="field">
+      <div class="field-row"><span class="field-label">Compare Over</span></div>
+      <div class="num-wrap" id="horizonWrap">
+        <input id="horizonInput" style="width:40px"/>
+        <span class="num-suffix">years</span>
+      </div>
+      <input type="range" id="horizonSlider" min="5" max="30" step="1"/>
+      <div class="chips">
+        <button class="chip" onclick="setVal('horizon',10)">10y</button>
+        <button class="chip" onclick="setVal('horizon',15)">15y</button>
+        <button class="chip" onclick="setVal('horizon',20)">20y</button>
+        <button class="chip" onclick="setVal('horizon',25)">25y</button>
+        <button class="chip" onclick="setVal('horizon',30)">30y</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tax -->
+  <div class="card">
+    <div class="sec-label"><span>🧾</span><span>Tax Details</span></div>
+    <div class="field">
+      <div class="field-row"><span class="field-label">Tax Regime</span></div>
+      <div class="chips" style="margin-top:6px;">
+        <button class="chip active" id="regimeNew" onclick="setRegime('new')">New Regime</button>
+        <button class="chip" id="regimeOld" onclick="setRegime('old')">Old Regime</button>
+      </div>
+    </div>
+    <div id="oldRegimeSection" style="display:none">
+      <div class="field">
+        <div class="field-row"><span class="field-label">Tax Slab</span></div>
+        <div class="num-wrap" id="slabWrap">
+          <input id="slabInput" style="width:40px"/>
+          <span class="num-suffix">%</span>
+        </div>
+        <input type="range" id="slabSlider" min="0" max="30" step="5"/>
+        <div class="chips">
+          <button class="chip" onclick="setVal('slab',5)">5%</button>
+          <button class="chip" onclick="setVal('slab',10)">10%</button>
+          <button class="chip" onclick="setVal('slab',20)">20%</button>
+          <button class="chip" onclick="setVal('slab',30)">30%</button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-row"><span class="field-label">Monthly Basic Salary</span></div>
+        <div class="num-wrap" id="basicWrap">
+          <span class="num-prefix rs">₹</span>
+          <input id="basicInput" style="width:100px"/>
+        </div>
+      </div>
+      <div class="inline-notice">
+        Sec 24 (₹2L interest) + Sec 80C (₹1.5L principal) for buyer. HRA for renter.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /left-panel -->
+
+<!-- ════════════════ RIGHT PANEL ════════════════ -->
+<div class="right-panel">
+
+  <!-- Verdict -->
+  <div class="verdict-card" id="verdictCard">
+    <div class="verdict-top">
+      <div class="verdict-main">
+        <div class="verdict-pill">
+          <div class="verdict-pill-dot" id="verdictDot"></div>
+          <span class="verdict-pill-label" id="verdictLabel">—</span>
+        </div>
+        <div>
+          <span class="verdict-hero" id="verdictHero">—</span>
+          <span class="verdict-hero-sub" id="verdictSub">advantage</span>
+        </div>
+      </div>
+      <div class="verdict-breakeven" id="verdictBreakeven" style="display:none">
+        <div class="be-label">Break-even</div>
+        <div class="be-year" id="beYearVal">—</div>
+      </div>
+    </div>
+    <div class="verdict-bar-track">
+      <div class="verdict-bar-buy" id="verdictBarBuy" style="width:50%"></div>
+      <div class="verdict-bar-invest"></div>
+    </div>
+    <div class="verdict-row" style="margin-top:8px;">
+      <div class="verdict-side">
+        <span class="verdict-side-dot" style="background:#E07B00"></span>
+        <span class="verdict-side-label">Buy</span>
+        <span class="verdict-side-amt" id="verdictBuyAmt">—</span>
+      </div>
+      <div class="verdict-side">
+        <span class="verdict-side-dot" style="background:var(--invest)"></span>
+        <span class="verdict-side-label">Rent + Invest</span>
+        <span class="verdict-side-amt" id="verdictRentAmt">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Snapshot -->
+  <div class="snapshot-grid">
+    <div class="snapshot-card">
+      <div class="snapshot-section-label">If you Buy — Today</div>
+      <div class="snapshot-number" id="snapBuyMo">—</div>
+      <div class="snapshot-sub">EMI + maintenance / month</div>
+      <div class="snap-divider"></div>
+      <div class="snap-row">
+        <div>
+          <div class="snap-item-label">Loan amount</div>
+          <div class="snap-item-val" id="snapLoan">—</div>
+        </div>
+        <div style="text-align:right">
+          <div class="snap-item-label">Down + stamp</div>
+          <div class="snap-item-val" id="snapUpfront">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="snapshot-card">
+      <div class="snapshot-section-label">If you Rent — Today</div>
+      <div class="snapshot-number" id="snapRentMo">—</div>
+      <div class="snapshot-sub">rent / month</div>
+      <div class="snap-divider"></div>
+      <div class="snap-row">
+        <div>
+          <div class="snap-item-label">Lump sum invested</div>
+          <div class="snap-item-val" id="snapLumpsum">—</div>
+        </div>
+        <div style="text-align:right">
+          <div class="snap-item-label">Monthly surplus</div>
+          <div class="snap-item-val" id="snapSurplus">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wealth Projection Chart -->
+  <div class="chart-card">
+    <div class="chart-label">Wealth Projection</div>
+    <svg id="wealthChart" viewBox="0 0 580 196" style="width:100%;height:auto;display:block;overflow:visible"></svg>
+    <div class="chart-legend">
+      <div class="legend-item">
+        <div class="legend-line" style="background:#E07B00"></div>Buy (net wealth)
+      </div>
+      <div class="legend-item">
+        <div class="legend-line" style="background:#7D8C5A"></div>Rent + Invest
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly Outflow Chart -->
+  <div class="chart-card">
+    <div class="chart-label">Monthly Outflow Over Time</div>
+    <svg id="outflowChart" viewBox="0 0 580 156" style="width:100%;height:auto;display:block;overflow:visible"></svg>
+    <div class="chart-legend">
+      <div class="legend-item">
+        <div class="legend-line" style="background:#E07B00"></div>EMI + Maintenance
+      </div>
+      <div class="legend-item">
+        <div class="legend-line" style="background:#7D8C5A"></div>Monthly Rent
+      </div>
+    </div>
+    <div class="crossover-note" id="crossoverNote" style="display:none"></div>
+  </div>
+
+  <!-- After X Years — row-pair grid: each row spans both columns so heights always match -->
+  <div class="after-card">
+    <div class="after-title" id="afterTitle">YOUR LIFE AFTER 20 YEARS</div>
+
+    <!-- Column headers -->
+    <div class="after-header-row">
+      <div class="after-col-header">
+        <div class="after-col-bar" style="background:#E07B00"></div>
+        <span class="after-col-title">If you Buy</span>
+      </div>
+      <div class="after-col-header after-col-header-right">
+        <div class="after-col-bar" style="background:var(--invest)"></div>
+        <span class="after-col-title">If you Rent + Invest</span>
+      </div>
+    </div>
+
+    <!-- Row 1: Primary asset / corpus -->
+    <div class="after-row-pair">
+      <div class="after-cell">
+        <span class="stat-row-label">Property Value</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbPropVal">—</div>
+        </div>
+      </div>
+      <div class="after-cell after-cell-right">
+        <span class="stat-row-label">Investment Corpus</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbCorpus">—</div>
+          <div class="stat-row-sub" id="sbCorpusSub"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Obligation / upfront invested -->
+    <div class="after-row-pair">
+      <div class="after-cell">
+        <span class="stat-row-label">Loan Balance</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbLoanBal">—</div>
+          <div class="stat-row-sub" id="sbLoanBalSub"></div>
+        </div>
+      </div>
+      <div class="after-cell after-cell-right">
+        <span class="stat-row-label">Lump Sum Invested</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbLumpInvested">—</div>
+          <div class="stat-row-sub">DP + stamp on day 1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Monthly cost -->
+    <div class="after-row-pair">
+      <div class="after-cell">
+        <span class="stat-row-label">Monthly Cost</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbEmi">—</div>
+          <div class="stat-row-sub" id="sbEmiSub"></div>
+        </div>
+      </div>
+      <div class="after-cell after-cell-right">
+        <span class="stat-row-label">Monthly Rent</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbRentFinal">—</div>
+          <div class="stat-row-sub" id="sbRentFinalSub"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: Total paid out -->
+    <div class="after-row-pair">
+      <div class="after-cell">
+        <span class="stat-row-label">Total Paid Out</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbTotalEmi">—</div>
+          <div class="stat-row-sub">all EMI payments</div>
+        </div>
+      </div>
+      <div class="after-cell after-cell-right">
+        <span class="stat-row-label">Total Paid Out</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbTotalRent">—</div>
+          <div class="stat-row-sub" id="sbTotalRentSub"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: Net Wealth — hero -->
+    <div class="after-row-pair after-row-hero">
+      <div class="after-cell">
+        <span class="stat-row-label" style="font-weight:600;color:var(--text-secondary)">Net Wealth</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbBuyW" style="font-size:22px;font-weight:800">—</div>
+          <div class="stat-row-sub">property − loan</div>
+        </div>
+      </div>
+      <div class="after-cell after-cell-right">
+        <span class="stat-row-label" style="font-weight:600;color:var(--text-secondary)">Net Wealth</span>
+        <div class="stat-row-right">
+          <div class="stat-row-val" id="sbRentW" style="font-size:22px;font-weight:800">—</div>
+          <div class="stat-row-sub">corpus after LTCG tax</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Methodology -->
+  <div class="methodology" id="methodology"></div>
+
+</div><!-- /right-panel -->
+</div><!-- /app-body -->
+
+<section class="content-wrap" aria-label="Rent vs Buy informational content">
+  <div class="content-card section-white">
+    <h2>Understanding your results</h2>
+    <p>The calculator compares two paths over your chosen time horizon.</p>
+    <p><strong>Path 1 - Buy:</strong> You take a home loan, pay EMI, build equity as the property appreciates, and claim tax deductions under Section 24 and 80C in the old regime. At the end of the period, you own an asset worth appreciated property value minus outstanding loan.</p>
+    <p><strong>Path 2 - Rent and invest:</strong> You pay rent and invest the monthly EMI-minus-rent difference as a SIP. At the end of the period, you hold a mutual fund corpus with liquid wealth.</p>
+    <p>The result shows which path leaves you with more net wealth.</p>
+    <ul>
+      <li><strong>Net wealth (buy):</strong> Appreciated property value minus remaining loan balance, including applicable tax benefits under old regime assumptions.</li>
+      <li><strong>Net wealth (rent + invest):</strong> Mutual fund corpus at your selected return assumption after modeled taxes.</li>
+      <li><strong>Break-even year:</strong> The year buying catches up with renting and investing. Before this point, renting may win; after it, buying may win depending on appreciation.</li>
+    </ul>
+    <p><strong>One thing to keep in mind:</strong> this calculator models wealth. It does not model lifestyle factors such as school proximity, stability, or family preference.</p>
+  </div>
+
+  <div class="section-plain">
+    <h2>How to use this calculator</h2>
+    <ol class="steps-list">
+      <li>Enter your city. The calculator preloads city-level default rent and appreciation assumptions, and you can override them.</li>
+      <li>Add property details: purchase price, down payment, loan rate, and tenure.</li>
+      <li>Enter your rent if you continue renting.</li>
+      <li>Select investment risk profile: Conservative (9%), Moderate (12%), or Aggressive (15%).</li>
+      <li>Choose your horizon across 10 to 30 years.</li>
+      <li>Review the net wealth outcome, winner, and break-even behavior.</li>
+    </ol>
+  </div>
+
+  <div class="section-plain">
+    <h2>Factors that affect this calculation</h2>
+    <h3>How property appreciation rate changes everything</h3>
+    <p>At around 4% annual appreciation, renting and investing in equity mutual funds often wins before year 20 in many scenarios. At 7 to 8%, buying can become competitive sooner. Defaults are city-linked and can be edited.</p>
+
+    <h3>Why the EMI-to-rent ratio matters more than property price</h3>
+    <p>If EMI is much higher than equivalent rent, the renter can typically invest a larger monthly surplus in the early years. A tighter EMI-to-rent ratio makes buying more competitive faster.</p>
+
+    <h3>How Section 24 and 80C tax benefits shift the math</h3>
+    <p>Under old regime assumptions, Section 24 interest deduction and 80C principal deduction reduce effective cost for buyers and can improve buy outcomes. In the new regime, these deductions do not apply.</p>
+
+    <h3>Why city matters</h3>
+    <p>Appreciation and rental behavior differ significantly between metros and Tier 2 cities. These differences compound over long horizons and can materially change the winner.</p>
+  </div>
+
+  <div class="section-plain">
+    <h2>Frequently asked questions</h2>
+
+    <details class="faq-item">
+      <summary>
+        <span>Should I buy a house or rent and invest in India in 2026?</span>
+        <span class="faq-arrow" aria-hidden="true">▾</span>
+      </summary>
+      <p>There is no universal answer. It depends on your city, property price, loan terms, and how long you plan to stay. In many metros, when EMI is above roughly 1.5x equivalent rent, renting and investing can generate higher net wealth over 15 to 20 years.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span>Is property a good investment in India compared to mutual funds?</span>
+        <span class="faq-arrow" aria-hidden="true">▾</span>
+      </summary>
+      <p>Long-term Indian equity benchmarks have generally outperformed residential property appreciation in many cities. Property can still offer non-financial value: stability, utility, and behavioral discipline.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span>What property appreciation rate should I use?</span>
+        <span class="faq-arrow" aria-hidden="true">▾</span>
+      </summary>
+      <p>For many metros, 5 to 6% can be a practical long-run assumption. For many Tier 2 cities, 3 to 5% is often more realistic. Use your micro-market data if you have credible long-term evidence.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span>Does prepaying the home loan change this calculation?</span>
+        <span class="faq-arrow" aria-hidden="true">▾</span>
+      </summary>
+      <p>Yes. Part-prepayments reduce interest burden and tenure, improving buying outcomes. Use Kedil's Prepay vs Invest calculator to model this directly.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>
+        <span>Which tax regime does this calculator use?</span>
+        <span class="faq-arrow" aria-hidden="true">▾</span>
+      </summary>
+      <p>This tool supports both. Old regime includes Section 24 and 80C assumptions when enabled. New regime removes those deductions.</p>
+    </details>
+  </div>
+
+  <div class="section-plain">
+    <h2>Other calculators you might find useful</h2>
+    <div class="other-tools-grid">
+      <a class="tool-card" href="https://kedil.money/calculators/rent-vs-buy">
+        <div class="tool-card-title">Rent vs Buy Calculator India</div>
+        <div class="tool-card-copy">Find out if buying a home makes financial sense right now.</div>
+      </a>
+      <div class="tool-card">
+        <div class="tool-card-title">SIP Returns Calculator</div>
+        <div class="tool-card-copy">See how your monthly SIP could grow over 10 20 years.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">EMI Calculator India</div>
+        <div class="tool-card-copy">Calculate your monthly EMI for any loan amount and rate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-plain">
+    <h2>Methodology and assumptions</h2>
+    <ul>
+      <li>Property appreciation: city-level defaults based on NHB RESIDEX style benchmarks and calibrated estimates.</li>
+      <li>Investment returns: pre-tax assumptions for 9%, 12%, and 15% profiles.</li>
+      <li>Home loan: reducing balance EMI model on outstanding principal.</li>
+      <li>Tax benefits: old regime Section 24 and 80C assumptions when selected.</li>
+      <li>SIP model: monthly investment approximated from EMI minus rent differences.</li>
+      <li>Rental escalation and maintenance escalation are configurable inputs.</li>
+      <li>All figures are nominal and based on assumptions, not guarantees.</li>
+    </ul>
+  </div>
+
+  <div class="section-plain">
+    <div style="width: 100%; height: 1px; background: #E5E5E0; margin-bottom: 14px;"></div>
+    <p>This calculator is for informational purposes and does not constitute financial advice. Results depend on assumptions and may differ from actual outcomes. Consult a SEBI-registered financial advisor before making investment or property decisions.</p>
+    <div class="aeo-note">Whether buying a home or renting and investing makes more financial sense in India depends on three drivers: EMI-to-rent ratio, property appreciation in your city, and horizon. Kedil's calculator compares both paths over 10 to 30 years using city-specific defaults and tax context.</div>
+  </div>
+
+  <div style="margin-top: 22px; padding-top: 16px; border-top: 1px solid #E5E5E0; font-size: 11px; color: #9A9A9A; text-align: center; line-height: 1.6;">
+    Built by <strong style="color: #1A1A1A">Kedil</strong> &middot; Educational tool, not financial advice. Tax rules FY 2024&ndash;25.
+  </div>
+</section>
+
+<script>
+(function(){
+"use strict";
+/* ════════ DATA — ALL 50 cities restored ════════ */
+const CITIES = [
+  {l:"Bengaluru",s:"KA",ap:8,mt:6000,metro:true,pr:10000000,rn:25000,sd:6,src:"NHB RESIDEX: 13.1% YoY Q4 FY25, 5yr avg ~8%"},
+  {l:"Mumbai",s:"MH",ap:6,mt:8000,metro:true,pr:15000000,rn:35000,sd:7,src:"NHB RESIDEX: 5.9% YoY Q4 FY25, 5yr avg ~6%"},
+  {l:"Hyderabad",s:"TG",ap:7,mt:4500,metro:true,pr:8000000,rn:20000,sd:6,src:"NHB RESIDEX: 4.8% YoY Q4 FY25, 5yr avg ~7%"},
+  {l:"Chennai",s:"TN",ap:6,mt:4000,metro:true,pr:8000000,rn:20000,sd:11,src:"NHB RESIDEX: 9% YoY Q4 FY25, 5yr avg ~6%"},
+  {l:"Pune",s:"MH",ap:7,mt:5000,metro:true,pr:8000000,rn:22000,sd:7,src:"NHB RESIDEX: 6.8% YoY Q4 FY25, 5yr avg ~7%"},
+  {l:"Delhi NCR",s:"DL",ap:5,mt:5000,metro:true,pr:12000000,rn:30000,sd:7,src:"NHB RESIDEX: 2.9% YoY Q4 FY25, 5yr avg ~5%"},
+  {l:"Kolkata",s:"WB",ap:5,mt:3500,metro:true,pr:6000000,rn:15000,sd:7,src:"NHB RESIDEX: 9.6% YoY Q4 FY25, 5yr avg ~5%"},
+  {l:"Ahmedabad",s:"GJ",ap:6,mt:3500,metro:false,pr:6000000,rn:14000,sd:6,src:"NHB RESIDEX: 6.1% YoY Q4 FY25"},
+  {l:"Kochi",s:"KL",ap:5,mt:3500,metro:false,pr:6000000,rn:15000,sd:10,src:"Estimated — adjust to your local market"},
+  {l:"Jaipur",s:"RJ",ap:5,mt:3000,metro:false,pr:5000000,rn:12000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Lucknow",s:"UP",ap:4,mt:2500,metro:false,pr:4500000,rn:10000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Chandigarh",s:"CH",ap:5,mt:4000,metro:false,pr:7000000,rn:18000,sd:7,src:"Estimated — adjust to your local market"},
+  {l:"Indore",s:"MP",ap:5,mt:2500,metro:false,pr:4500000,rn:10000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Coimbatore",s:"TN",ap:5,mt:3000,metro:false,pr:5000000,rn:12000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Nagpur",s:"MH",ap:4,mt:2500,metro:false,pr:4000000,rn:10000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Bhopal",s:"MP",ap:4,mt:2500,metro:false,pr:4000000,rn:9000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Visakhapatnam",s:"AP",ap:5,mt:3000,metro:false,pr:5000000,rn:12000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Patna",s:"BR",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:7,src:"Estimated — adjust to your local market"},
+  {l:"Vadodara",s:"GJ",ap:5,mt:3000,metro:false,pr:4500000,rn:11000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Gurgaon",s:"HR",ap:6,mt:5000,metro:true,pr:10000000,rn:25000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Noida",s:"UP",ap:5,mt:4500,metro:true,pr:8000000,rn:20000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Thiruvananthapuram",s:"KL",ap:4,mt:3000,metro:false,pr:5000000,rn:12000,sd:10,src:"Estimated — adjust to your local market"},
+  {l:"Mysuru",s:"KA",ap:5,mt:3000,metro:false,pr:5000000,rn:11000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Mangaluru",s:"KA",ap:4,mt:2500,metro:false,pr:4500000,rn:10000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Surat",s:"GJ",ap:5,mt:3000,metro:false,pr:4500000,rn:11000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Nashik",s:"MH",ap:4,mt:2500,metro:false,pr:4000000,rn:9000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Rajkot",s:"GJ",ap:4,mt:2500,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Ranchi",s:"JH",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:5,src:"Estimated — adjust to your local market"},
+  {l:"Bhubaneswar",s:"OD",ap:5,mt:2500,metro:false,pr:4500000,rn:10000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Dehradun",s:"UK",ap:5,mt:2500,metro:false,pr:5000000,rn:12000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Guwahati",s:"AS",ap:4,mt:2000,metro:false,pr:4000000,rn:10000,sd:9,src:"Estimated — adjust to your local market"},
+  {l:"Madurai",s:"TN",ap:4,mt:2500,metro:false,pr:4000000,rn:9000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Trichy",s:"TN",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Salem",s:"TN",ap:4,mt:2000,metro:false,pr:3000000,rn:7000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Cuddalore",s:"TN",ap:3,mt:1500,metro:false,pr:2500000,rn:6000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Thanjavur",s:"TN",ap:3,mt:1500,metro:false,pr:2500000,rn:6000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Dindigul",s:"TN",ap:3,mt:1500,metro:false,pr:2500000,rn:5500,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Tirunelveli",s:"TN",ap:3,mt:1500,metro:false,pr:2500000,rn:6000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Erode",s:"TN",ap:4,mt:2000,metro:false,pr:3000000,rn:7000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Vellore",s:"TN",ap:4,mt:2000,metro:false,pr:3000000,rn:7000,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Nagercoil",s:"TN",ap:3,mt:1500,metro:false,pr:2500000,rn:5500,sd:11,src:"Estimated — adjust to your local market"},
+  {l:"Hubli-Dharwad",s:"KA",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Belgaum",s:"KA",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Vijayawada",s:"AP",ap:5,mt:2500,metro:false,pr:4500000,rn:10000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Guntur",s:"AP",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Warangal",s:"TG",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Aurangabad",s:"MH",ap:4,mt:2500,metro:false,pr:4000000,rn:9000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Solapur",s:"MH",ap:3,mt:2000,metro:false,pr:3000000,rn:7000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Amritsar",s:"PB",ap:4,mt:2500,metro:false,pr:4000000,rn:9000,sd:7,src:"Estimated — adjust to your local market"},
+  {l:"Ludhiana",s:"PB",ap:4,mt:2500,metro:false,pr:4000000,rn:9000,sd:7,src:"Estimated — adjust to your local market"},
+  {l:"Kanpur",s:"UP",ap:3,mt:2000,metro:false,pr:3000000,rn:7000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Varanasi",s:"UP",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Agra",s:"UP",ap:3,mt:2000,metro:false,pr:3000000,rn:7000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Meerut",s:"UP",ap:3,mt:2000,metro:false,pr:3000000,rn:7000,sd:8,src:"Estimated — adjust to your local market"},
+  {l:"Jodhpur",s:"RJ",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Udaipur",s:"RJ",ap:5,mt:2500,metro:false,pr:4500000,rn:10000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Raipur",s:"CG",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:6,src:"Estimated — adjust to your local market"},
+  {l:"Goa",s:"GA",ap:6,mt:3500,metro:false,pr:8000000,rn:18000,sd:5,src:"Estimated — adjust to your local market"},
+  {l:"Pondicherry",s:"PY",ap:5,mt:2500,metro:false,pr:4500000,rn:10000,sd:9,src:"Estimated — adjust to your local market"},
+  {l:"Shimla",s:"HP",ap:4,mt:2500,metro:false,pr:5000000,rn:12000,sd:7,src:"Estimated — adjust to your local market"},
+  {l:"Jammu",s:"JK",ap:3,mt:2000,metro:false,pr:3500000,rn:8000,sd:7,src:"Estimated — adjust to your local market"},
+  {l:"Thrissur",s:"KL",ap:4,mt:2500,metro:false,pr:4500000,rn:10000,sd:10,src:"Estimated — adjust to your local market"},
+  {l:"Kozhikode",s:"KL",ap:4,mt:2500,metro:false,pr:4500000,rn:10000,sd:10,src:"Estimated — adjust to your local market"},
+  {l:"Tiruchirappalli",s:"TN",ap:4,mt:2000,metro:false,pr:3500000,rn:8000,sd:11,src:"Estimated — adjust to your local market"},
+];
+const POPULAR = ["Bengaluru","Mumbai","Hyderabad","Chennai","Pune","Delhi NCR"];
+const RISK = {
+  conservative:{l:"Conservative",r:9, desc:"~9% p.a. (Nifty 50 floor)"},
+  moderate:    {l:"Moderate",    r:12,desc:"~12% p.a. (Nifty 50 median)"},
+  aggressive:  {l:"Aggressive",  r:15,desc:"~15% p.a. (small/mid mix)"},
+};
+
+/* ════════ STATE ════════ */
+let S = {
+  city:CITIES[0], price:10000000, dpPct:20, rate:8.5, tenure:20, appre:8,
+  rent:25000, rentUp:8, risk:"moderate", horizon:20,
+  regime:"new", slab:30, basic:60000,
+  stampMode:"pct", stampPct:6, stampAmt:600000,
+  maintMode:"amt", maintAmt:6000, maintPct:0.5, maintUp:5,
+};
+
+/* ════════ FORMATTERS ════════ */
+const R_SPAN='<span class="rs">&#8377;</span>';
+const fmt=(n)=>{const a=Math.abs(n),s=n<0?"-":"";if(a>=1e7)return s+R_SPAN+(a/1e7).toFixed(2)+" Cr";if(a>=1e5)return s+R_SPAN+(a/1e5).toFixed(2)+" L";return s+R_SPAN+Math.round(a).toLocaleString("en-IN");};
+const fmtIn=(n)=>R_SPAN+Math.round(Math.abs(n)).toLocaleString("en-IN");
+const fmtS=(n)=>{const a=Math.abs(n),s=n<0?"-":"";if(a>=1e7)return s+R_SPAN+(a/1e7).toFixed(1)+"Cr";if(a>=1e5)return s+R_SPAN+(a/1e5).toFixed(1)+"L";return s+R_SPAN+Math.round(a).toLocaleString("en-IN");};
+/* fmtSvg: plain ₹ char for SVG text nodes which don't parse HTML */
+const fmtSvg=(n)=>{const a=Math.abs(n),s=n<0?"-":"";if(a>=1e7)return s+"₹"+(a/1e7).toFixed(1)+"Cr";if(a>=1e5)return s+"₹"+(a/1e5).toFixed(1)+"L";return s+"₹"+Math.round(a).toLocaleString("en-IN");};
+const fmtC=(n)=>Math.round(n).toLocaleString("en-IN");
+
+/* ════════ MATH ════════ */
+function calcEMI(p,dp,r,t){const l=p*(1-dp/100),mr=r/1200,tm=t*12;return mr===0?l/tm:(l*mr*Math.pow(1+mr,tm))/(Math.pow(1+mr,tm)-1);}
+
+function compute(){
+  try{
+  const {price,dpPct,rate,tenure,appre,rent,rentUp,risk,horizon,regime,slab,basic,stampMode,stampPct,stampAmt,maintMode,maintAmt,maintPct,maintUp}=S;
+  const mfRet=RISK[risk].r, ct=S.city;
+  const aStamp=stampMode==="pct"?price*stampPct/100:stampAmt;
+  const aMaint=maintMode==="amt"?maintAmt:price*maintPct/100/12;
+  const dp=price*dpPct/100,loan=price-dp,upfront=dp+aStamp;
+  const mr=rate/1200,tm=tenure*12;
+  const emi=mr===0?loan/tm:(loan*mr*Math.pow(1+mr,tm))/(Math.pow(1+mr,tm)-1);
+  let bal=loan,cumRent=0,rCorpus=upfront,curRent=rent,curMaint=aMaint,beYear=null;
+  let sipYear1=0,sipFinal=0,totalInvested=upfront,crossoverYear=null;
+  const years=[];
+  for(let y=1;y<=horizon;y++){
+    let yInt=0,yPri=0;
+    for(let m=0;m<12;m++){if(bal>0){const ip=bal*mr,pp=Math.min(emi-ip,bal);yInt+=ip;yPri+=pp;bal=Math.max(0,bal-pp);}}
+    let buyTax=0;
+    if(regime==="old")buyTax=(Math.min(yInt,200000)+Math.min(yPri,150000))*slab/100;
+    const propVal=price*Math.pow(1+appre/100,y),buyW=propVal-bal;
+    const yRent=curRent*12;cumRent+=yRent;
+    let hraSave=0;
+    if(regime==="old")hraSave=Math.max(0,Math.min(basic*6,yRent-basic*12*0.1,basic*12*(ct.metro?0.5:0.4)))*slab/100;
+    const buyMo=(bal>0||y<=tenure)?emi+curMaint:curMaint;
+    const diff=buyMo-curRent;
+    if(y===1)sipYear1=Math.round(diff);
+    sipFinal=Math.round(diff);
+    if(diff>0)totalInvested+=diff*12;
+    if(!crossoverYear&&curRent>buyMo)crossoverYear=y;
+    rCorpus*=(1+mfRet/100);
+    if(diff>0){const mmr=mfRet/1200;rCorpus+=diff*(((Math.pow(1+mmr,12)-1)/mmr)*(1+mmr));}else{rCorpus+=diff*12;}
+    if(hraSave-buyTax>0)rCorpus+=hraSave-buyTax;
+    const gains=Math.max(0,rCorpus-upfront),ltcg=Math.max(0,gains-125000)*0.125,rentW=rCorpus-ltcg;
+    if(!beYear&&buyW>rentW)beYear=y;if(beYear&&buyW<rentW)beYear=null;
+    const rentMo=Math.round(curRent);
+    curRent*=(1+rentUp/100);curMaint*=(1+maintUp/100);
+    years.push({y,buyW:Math.round(buyW),rentW:Math.round(rentW),prop:Math.round(propVal),bal:Math.round(bal),buyMo:Math.round(buyMo),rentMo});
+  }
+  const last=years[years.length-1];
+  return {loan,upfront,emi,years,beYear,buyW:last.buyW,rentW:last.rentW,prop:last.prop,bal:last.bal,
+    corpus:Math.round(rCorpus),winner:last.buyW>last.rentW?"buy":"rent",adv:Math.abs(last.buyW-last.rentW),
+    rentFinal:Math.round(rent*Math.pow(1+rentUp/100,horizon)),
+    totalEmi:Math.round(emi*Math.min(tenure,horizon)*12),
+    totalRentPaid:Math.round(cumRent),maint:Math.round(aMaint),
+    sipYear1,totalInvested:Math.round(totalInvested),
+    buyMoNow:Math.round(emi+aMaint),crossoverYear,mfRet};
+  }catch(e){console.error("Compute error:",e);return null;}
+}
+
+/* ════════ CHARTS ════════ */
+function drawChart(svgId,W,H,pL,pR,pT,pB,series,xLab,crossoverYear,ttLabels){
+  
+  const svg=document.getElementById(svgId);if(!svg)return;
+  const pW=W-pL-pR,pH=H-pT-pB,n=series[0].data.length;
+  const allV=series.flatMap(s=>s.data);
+  const mn=Math.min(0,...allV),mx=Math.max(...allV),rng=mx-mn||1;
+  const tx=y=>pL+((y-1)/Math.max(n-1,1))*pW;
+  const ty=v=>pT+pH-((v-mn)/rng)*pH;
+  const gridLines=[0,1,2,3].map(i=>{
+    const v=mn+(rng*i/3);
+    return `<line x1="${pL}" x2="${W-pR}" y1="${ty(v).toFixed(1)}" y2="${ty(v).toFixed(1)}" stroke="#F2F2F2" stroke-width="1"/><text x="${pL-5}" y="${(ty(v)+4).toFixed(1)}" text-anchor="end" font-size="9" fill="#A3A3A3" font-family="Mukta,DM Sans,sans-serif">${fmtSvg(v)}</text>`;
+  }).join("");
+  const xLabels=xLab.map(d=>`<text x="${tx(d.y).toFixed(1)}" y="${H-4}" text-anchor="middle" font-size="9" fill="#A3A3A3" font-family="Mukta,DM Sans,sans-serif">Yr ${d.y}</text>`).join("");
+  /* Collision-safe end labels */
+  const GAP=15;
+  let endYs=series.map(s=>ty(s.data[n-1]));
+  if(Math.abs(endYs[0]-endYs[1])<GAP){
+    const mid=(endYs[0]+endYs[1])/2;
+    endYs[0]=Math.max(pT+8,mid-GAP/2);
+    endYs[1]=Math.min(pT+pH-4,mid+GAP/2);
+  }
+  const paths=series.map((s,i)=>{
+    const pts=s.data.map((v,j)=>`${j?"L":"M"}${tx(j+1).toFixed(1)},${ty(v).toFixed(1)}`).join("");
+    const area=pts+`L${tx(n).toFixed(1)},${(pT+pH).toFixed(1)}L${pL.toFixed(1)},${(pT+pH).toFixed(1)}Z`;
+    return `<path d="${area}" fill="${s.color}" opacity="0.07"/><path d="${pts}" fill="none" stroke="${s.color}" stroke-width="2.5" stroke-linejoin="round" ${s.dash?`stroke-dasharray="6,4"`:""}/>` +
+           `<text x="${(tx(n)+7).toFixed(1)}" y="${(endYs[i]+4).toFixed(1)}" font-size="10" font-weight="700" fill="${s.color}" font-family="Mukta,DM Sans,sans-serif">${fmtSvg(s.data[n-1])}</text>`;
+  }).join("");
+  let crossEl="";
+  if(crossoverYear&&crossoverYear<=n){
+    const cv=series[1].data[crossoverYear-1];
+    crossEl=`<line x1="${tx(crossoverYear).toFixed(1)}" x2="${tx(crossoverYear).toFixed(1)}" y1="${pT}" y2="${pT+pH}" stroke="#7C2D8E" stroke-width="1.5" stroke-dasharray="4,3"/>` +
+             `<circle cx="${tx(crossoverYear).toFixed(1)}" cy="${ty(cv).toFixed(1)}" r="4.5" fill="#7C2D8E" stroke="#fff" stroke-width="2"/>` +
+             `<text x="${tx(crossoverYear).toFixed(1)}" y="${pT-2}" text-anchor="middle" font-size="9" font-weight="700" fill="#7C2D8E" font-family="Mukta,DM Sans,sans-serif">Yr ${crossoverYear}</text>`;
+  }
+  const sw=n>1?pW/(n-1):pW;
+  const hits=Array.from({length:n},(_,i)=>`<rect class="cht" x="${(tx(i+1)-sw/2).toFixed(1)}" y="${pT}" width="${sw.toFixed(1)}" height="${pH}" fill="transparent" data-i="${i}" style="cursor:crosshair"/>`).join("");
+  svg.innerHTML=gridLines+xLabels+paths+crossEl+hits;
+  /* Tooltip */
+  const ttId='tt-'+svgId;
+  let tt=document.getElementById(ttId);
+  if(!tt){tt=document.createElement('div');tt.id=ttId;tt.className='chart-tooltip';svg.parentElement.style.position='relative';svg.parentElement.appendChild(tt);}
+  svg.querySelectorAll('.cht').forEach(r=>{
+    r.addEventListener('mouseenter',()=>{
+      const i=parseInt(r.dataset.i);
+      tt.innerHTML=`<div class="tt-yr">Year ${i+1}</div>` +
+        `<div class="tt-row"><div class="tt-dot" style="background:${series[0].color}"></div><span class="tt-lbl">${ttLabels[0]}</span><span class="tt-v">${fmt(series[0].data[i])}</span></div>` +
+        `<div class="tt-row"><div class="tt-dot" style="background:${series[1].color}"></div><span class="tt-lbl">${ttLabels[1]}</span><span class="tt-v">${fmt(series[1].data[i])}</span></div>`;
+      const svgR=svg.getBoundingClientRect(),cardR=svg.parentElement.getBoundingClientRect();
+      const ratio=svgR.width/W;
+      tt.style.display='block';
+      const ttW=tt.offsetWidth||160;
+      let left=tx(i+1)*ratio-ttW/2;
+      left=Math.max(0,Math.min(left,svgR.width-ttW));
+      tt.style.left=left+'px';
+      tt.style.top=Math.max(4,(svgR.top-cardR.top-tt.offsetHeight-10))+'px';
+      tt.style.transform='none';
+      let vl=svg.querySelector('.vline');
+      if(!vl){vl=document.createElementNS('http://www.w3.org/2000/svg','line');vl.setAttribute('class','vline');vl.setAttribute('pointer-events','none');svg.appendChild(vl);}
+      vl.setAttribute('x1',tx(i+1).toFixed(1));vl.setAttribute('x2',tx(i+1).toFixed(1));
+      vl.setAttribute('y1',pT);vl.setAttribute('y2',pT+pH);
+      vl.setAttribute('stroke','#E5E5E5');vl.setAttribute('stroke-width','1');vl.setAttribute('stroke-dasharray','4,3');
+    });
+    r.addEventListener('mouseleave',()=>{
+      tt.style.display='none';
+      const vl=svg.querySelector('.vline');if(vl)vl.setAttribute('stroke','transparent');
+    });
+  });
+}
+
+/* ════════ RENDER ════════ */
+function render(){
+  const R=compute();
+  if(!R)return; /* computation error — skip render */
+  const h=S.horizon;
+
+  /* EMI */
+  document.getElementById("emiDisplay").innerHTML=fmtIn(R.emi)+'<span> /mo</span>';
+
+  /* Verdict — FIX: no colored bg. Winner side gets text color only */
+  const isRent=R.winner==="rent";
+  document.getElementById("verdictDot").className="verdict-pill-dot"+(isRent?" invest-dot":"");
+  document.getElementById("verdictLabel").textContent=(isRent?"Renting + Investing":"Buying")+" builds more wealth";
+  document.getElementById("verdictHero").innerHTML=fmt(R.adv);
+  document.getElementById("verdictSub").textContent="advantage over "+h+" yrs";
+  const beEl=document.getElementById("verdictBreakeven");
+  if(R.beYear){beEl.style.display="block";document.getElementById("beYearVal").textContent="Year "+R.beYear;}
+  else beEl.style.display="none";
+  const pct=Math.max(5,Math.min(95,(R.buyW/(R.buyW+R.rentW))*100));
+  document.getElementById("verdictBarBuy").style.width=pct+"%";
+  const buyAmtEl=document.getElementById("verdictBuyAmt");
+  const rentAmtEl=document.getElementById("verdictRentAmt");
+  buyAmtEl.innerHTML=fmt(R.buyW);
+  rentAmtEl.innerHTML=fmt(R.rentW);
+  /* Winner side: buy → green, rent → teal. Loser stays text-primary */
+  buyAmtEl.className="verdict-side-amt"+(R.winner==="buy"?" winner":"");
+  rentAmtEl.className="verdict-side-amt"+(R.winner==="rent"?" winner-invest":"");
+
+  /* Snapshot */
+  document.getElementById("snapBuyMo").innerHTML=fmtIn(R.buyMoNow);
+  document.getElementById("snapRentMo").innerHTML=fmtIn(S.rent);
+  document.getElementById("snapLoan").innerHTML=fmt(R.loan);
+  document.getElementById("snapUpfront").innerHTML=fmt(R.upfront);
+  document.getElementById("snapLumpsum").innerHTML=fmt(R.upfront);
+  const surpEl=document.getElementById("snapSurplus");
+  surpEl.innerHTML=R.sipYear1>0?fmt(R.sipYear1):'<span class="rs">&#8377;</span>0';
+  surpEl.className="snap-item-val"+(R.sipYear1>0?" positive":" muted");
+
+  /* Charts */
+  const xLab=R.years.filter((_,i)=>i%Math.max(1,Math.ceil(R.years.length/5))===0||i===R.years.length-1);
+  /* Chart dimensions: W, H, paddingLeft, paddingRight, paddingTop, paddingBottom */
+  drawChart("wealthChart",580,196,56,74,14,28,
+    [{data:R.years.map(d=>d.buyW),color:"#E07B00",dash:false},
+     {data:R.years.map(d=>d.rentW),color:"#7D8C5A",dash:true}],xLab,null,
+    ["Buy (net wealth)","Rent + Invest"]);
+  drawChart("outflowChart",580,156,56,74,12,26,
+    [{data:R.years.map(d=>d.buyMo),color:"#E07B00",dash:false},
+     {data:R.years.map(d=>d.rentMo),color:"#7D8C5A",dash:true}],xLab,R.crossoverYear,
+    ["EMI + Maintenance","Monthly Rent"]);
+
+  /* Crossover note — plain text, no box */
+  const cn=document.getElementById("crossoverNote");
+  if(R.crossoverYear){
+    cn.style.display="block";cn.className="crossover-note";
+    cn.innerHTML=`<strong>Year ${R.crossoverYear}:</strong> Rent crosses EMI+Maintenance — no new SIP after this year.`;
+  } else {
+    cn.style.display="block";cn.className="crossover-note positive-note";
+    cn.textContent=`Rent never crosses EMI+Maintenance within ${h} years — surplus SIP runs throughout.`;
+  }
+
+  /* After years — all non-hero values use plain text-primary (no color classes) */
+  document.getElementById("afterTitle").textContent=`YOUR LIFE AFTER ${h} YEARS`;
+
+  /* Buy side */
+  document.getElementById("sbPropVal").innerHTML=fmt(R.prop);
+  /* Loan balance: plain text, state communicated via sub-label only */
+  const lb=document.getElementById("sbLoanBal");
+  lb.innerHTML=R.bal>0?fmt(R.bal):"Fully paid off!";
+  lb.className="stat-row-val"; /* no color class — same as rent side */
+  const lbSub=document.getElementById("sbLoanBalSub");
+  if(lbSub) lbSub.textContent=R.bal>0?"outstanding":"loan cleared";
+  document.getElementById("sbEmi").innerHTML=h>=S.tenure?'<span class="rs">&#8377;</span>0 — Done!':fmt(Math.round(R.emi))+" + maint.";
+  document.getElementById("sbEmiSub").textContent=h>=S.tenure?`Paid for ${S.tenure} yrs`:`${S.tenure-h} yrs left`;
+  document.getElementById("sbTotalEmi").innerHTML=fmt(R.totalEmi);
+  /* Net Wealth hero: winner gets their own side color, loser stays text-primary */
+  const buyWEl=document.getElementById("sbBuyW");
+  buyWEl.innerHTML=fmt(R.buyW);
+  buyWEl.className="stat-row-val"+(R.winner==="buy"?" positive":"");
+
+  /* Rent side */
+  document.getElementById("sbCorpus").innerHTML=fmt(R.corpus);
+  document.getElementById("sbCorpusSub").textContent=`at ${R.mfRet}% returns`;
+  document.getElementById("sbLumpInvested").innerHTML=fmt(R.upfront);
+  document.getElementById("sbRentFinal").innerHTML=fmt(R.rentFinal);
+  document.getElementById("sbRentFinalSub").innerHTML=`was ${fmt(S.rent)} today`;
+  document.getElementById("sbTotalRent").innerHTML=fmt(R.totalRentPaid);
+  document.getElementById("sbTotalRentSub").textContent=`over ${h} years`;
+  const rentWEl=document.getElementById("sbRentW");
+  rentWEl.innerHTML=fmt(R.rentW);
+  /* Rent winner uses teal (invest color), not green */
+  rentWEl.className="stat-row-val"+(R.winner==="rent"?" invest-win":"");
+
+  /* Methodology */
+  document.getElementById("methodology").innerHTML=
+    `<strong>How this works:</strong> Buyer pays DP + stamp (${fmt(R.upfront)}) upfront, then EMI + maintenance monthly. Renter invests the lump sum and SIPs surplus into MFs at ${R.mfRet}% (${RISK[S.risk].l}). LTCG taxed at 12.5% above <span class="rs">&#8377;</span>1.25L. Property at ${S.appre}% p.a.`+
+    (S.regime==="old"?` Old regime: Sec 24 (<span class="rs">&#8377;</span>2L) + Sec 80C (<span class="rs">&#8377;</span>1.5L) for buyer. HRA for renter.`:"")+
+    `<br/><strong>Not included:</strong> Rental deposit, interior costs, property tax, home insurance, emotional value of ownership.
+    <br/><strong>Sources:</strong> NHB RESIDEX (appreciation), Nifty 50 TRI rolling returns (MF presets), state govt notifications (stamp duty). All other defaults are estimates — adjust to your actual situation.`;
+
+  /* Badges */
+  document.getElementById("dpBadge").innerHTML=fmtS(S.price*S.dpPct/100);
+  document.getElementById("appreBadge").textContent=S.city.ap+"% avg · "+S.city.l;
+  document.getElementById("appreSrc").textContent=S.city.src||"Estimated — adjust to your local market";
+
+  syncAllChips();
+}
+
+/* ════════ CHIP SYNC ════════ */
+function syncAllChips(){
+  syncChipGroup("priceChips",[5000000,7500000,10000000,15000000,20000000,30000000],S.price);
+  syncChipGroup("rentChips",[10000,15000,20000,25000,35000,50000],S.rent);
+  /* horizon */
+  document.querySelectorAll("#leftPanel .chip[data-h]").forEach(b=>b.classList.toggle("active",parseInt(b.dataset.h)===S.horizon));
+  /* maintUp */
+  document.querySelectorAll("#leftPanel .chip[data-mu]").forEach(b=>b.classList.toggle("active",parseInt(b.dataset.mu)===S.maintUp));
+  /* slab */
+  document.querySelectorAll("#leftPanel .chip[data-sl]").forEach(b=>b.classList.toggle("active",parseInt(b.dataset.sl)===S.slab));
+}
+function syncChipGroup(id,vals,current){
+  document.querySelectorAll("#"+id+" .chip").forEach((b,i)=>{
+    b.dataset.val=vals[i];
+    b.classList.toggle("active",vals[i]===current);
+  });
+}
+
+/* ════════ INIT ════════ */
+function init(){
+  /* Popular chips */
+  const popEl=document.getElementById("popularChips");
+  POPULAR.forEach(name=>{
+    const c=CITIES.find(x=>x.l===name);if(!c)return;
+    const b=document.createElement("button");
+    b.className="chip city-chip"+(S.city.l===name?" active":"");
+    b.textContent=name;
+    b.onclick=()=>pickCity(c);
+    popEl.appendChild(b);
+  });
+
+  /* City search — ALL cities available */
+  const ci=document.getElementById("cityInput"),dd=document.getElementById("cityDropdown");
+  ci.value=S.city.l;
+  const popChips=document.getElementById("popularChips");
+  ci.addEventListener("focus",()=>{
+    if(ci.value){popChips.style.display="none";showDD(ci.value);}
+    else{popChips.style.display="flex";}
+  });
+  ci.addEventListener("input",()=>{
+    if(ci.value){popChips.style.display="none";showDD(ci.value);}
+    else{popChips.style.display="flex";dd.classList.remove("open");}
+  });
+  document.addEventListener("mousedown",e=>{if(!document.getElementById("cityWrap").contains(e.target))dd.classList.remove("open");});
+  function showDD(q){
+    if(!q){dd.classList.remove("open");return;}
+    const f=CITIES.filter(c=>c.l.toLowerCase().includes(q.toLowerCase())).slice(0,10);
+    dd.innerHTML=f.map(c=>`<div class="city-item" data-city="${c.l}"><span class="city-name">${c.l}</span><span class="city-meta">${c.metro?"Metro":"Non-metro"} · ${c.ap}%</span></div>`).join("");
+    dd.querySelectorAll(".city-item").forEach(el=>el.addEventListener("mousedown",()=>{const c=CITIES.find(x=>x.l===el.dataset.city);if(c)pickCity(c);}));
+    dd.classList.toggle("open",f.length>0);
+  }
+
+  /* Price chips */
+  const priceVals=[5000000,7500000,10000000,15000000,20000000,30000000];
+  const pce=document.getElementById("priceChips");
+  priceVals.forEach(v=>{const b=document.createElement("button");b.className="chip";b.innerHTML=fmtS(v);b.onclick=()=>{S.price=v;document.getElementById("priceInput").value=fmtC(v);render();};pce.appendChild(b);});
+
+  /* Rent chips */
+  const rentVals=[10000,15000,20000,25000,35000,50000];
+  const rce=document.getElementById("rentChips");
+  rentVals.forEach(v=>{const b=document.createElement("button");b.className="chip";b.innerHTML=fmtS(v);b.onclick=()=>{S.rent=v;document.getElementById("rentInput").value=fmtC(v);render();};rce.appendChild(b);});
+
+  /* Risk options */
+  const re=document.getElementById("riskOptions");
+  Object.entries(RISK).forEach(([k,v])=>{
+    const b=document.createElement("button");
+    b.className="risk-option"+(S.risk===k?" active":"");
+    b.innerHTML=`<div class="risk-dot"></div><div class="risk-text"><div class="risk-name">${v.l}</div><div class="risk-desc">${v.desc}</div></div>`;
+    b.onclick=()=>{S.risk=k;document.querySelectorAll(".risk-option").forEach(x=>x.classList.remove("active"));b.classList.add("active");render();};
+    re.appendChild(b);
+  });
+
+  /* Bind all inputs */
+  bindNum("priceInput","priceWrap","price",true);
+  bindNum("rentInput","rentWrap","rent",true);
+  bindSliderNum("dpInput","dpWrap","dpSlider","dpPct");
+  bindSliderNum("rateInput","rateWrap","rateSlider","rate");
+  bindSliderNum("appreInput","appreWrap","appreSlider","appre");
+  bindSliderNum("rentUpInput","rentUpWrap","rentUpSlider","rentUp");
+  bindSliderNum("horizonInput","horizonWrap","horizonSlider","horizon");
+  bindSliderNum("slabInput","slabWrap","slabSlider","slab");
+  bindNum("basicInput","basicWrap","basic",true);
+  bindSliderNum("maintUpInput","maintUpWrap","maintUpSlider","maintUp");
+
+  /* Tenure — also syncs horizon */
+  const tenureInp=document.getElementById("tenureInput"),tenureSl=document.getElementById("tenureSlider");
+  tenureInp.value=S.tenure; tenureSl.value=S.tenure;
+  tenureInp.addEventListener("blur",()=>{const n=parseInt(tenureInp.value);if(n>=5&&n<=30){S.tenure=n;S.horizon=n;tenureSl.value=n;document.getElementById("horizonInput").value=n;document.getElementById("horizonSlider").value=n;}tenureInp.value=S.tenure;render();});
+  tenureSl.addEventListener("input",()=>{S.tenure=parseInt(tenureSl.value);S.horizon=S.tenure;tenureInp.value=S.tenure;document.getElementById("horizonInput").value=S.horizon;document.getElementById("horizonSlider").value=S.horizon;render();});
+  document.getElementById("tenureWrap").addEventListener("focusin",()=>document.getElementById("tenureWrap").classList.add("focused"));
+  document.getElementById("tenureWrap").addEventListener("focusout",()=>document.getElementById("tenureWrap").classList.remove("focused"));
+
+  /* Stamp segment */
+  bindSegment("stampSegment",v=>{
+    S.stampMode=v;
+    if(v==="pct"){document.getElementById("stampPrefix").textContent="";document.getElementById("stampSuffix").textContent="%";document.getElementById("stampInput").value=S.stampPct;}
+    else{document.getElementById("stampPrefix").innerHTML='<span class="rs">&#8377;</span>';document.getElementById("stampSuffix").textContent="";document.getElementById("stampInput").value=fmtC(S.stampAmt);}
+  });
+  const stampInp=document.getElementById("stampInput");
+  stampInp.addEventListener("blur",()=>{const n=parseFloat(stampInp.value.replace(/,/g,""));if(!isNaN(n)){if(S.stampMode==="pct")S.stampPct=n;else S.stampAmt=n;}render();});
+
+  /* Maint segment */
+  bindSegment("maintSegment",v=>{
+    S.maintMode=v;
+    if(v==="amt"){document.getElementById("maintPrefix").innerHTML='<span class="rs">&#8377;</span>';document.getElementById("maintSuffix").textContent="";document.getElementById("maintInput").value=fmtC(S.maintAmt);}
+    else{document.getElementById("maintPrefix").textContent="";document.getElementById("maintSuffix").textContent="% / yr";document.getElementById("maintInput").value=S.maintPct;}
+  });
+  const maintInp=document.getElementById("maintInput");
+  maintInp.addEventListener("blur",()=>{const n=parseFloat(maintInp.value.replace(/,/g,""));if(!isNaN(n)){if(S.maintMode==="amt")S.maintAmt=n;else S.maintPct=n;}render();});
+
+  /* Adv toggle */
+  document.getElementById("advToggle").addEventListener("click",()=>{
+    const open=document.getElementById("advSection").classList.toggle("open");
+    document.getElementById("advToggle").textContent=(open?"▾ ":"▸ ")+"Customize defaults";
+  });
+
+  render();
+}
+
+/* ════════ GENERIC HELPERS ════════ */
+/* ── Input validation bounds ── */
+const BOUNDS={price:[100000,1e9],rent:[0,1e7],basic:[0,1e7]};
+
+function clamp(key,val){
+  const b=BOUNDS[key];
+  if(!b)return Math.max(0,val);
+  return Math.max(b[0],Math.min(b[1],val));
+}
+
+function bindNum(inputId,wrapId,key,comma){
+  const inp=document.getElementById(inputId),wrap=document.getElementById(wrapId);
+  inp.value=comma?fmtC(S[key]):S[key];
+  wrap.addEventListener("focusin",()=>wrap.classList.add("focused"));
+  wrap.addEventListener("focusout",()=>wrap.classList.remove("focused"));
+  inp.addEventListener("blur",()=>{const n=parseFloat(inp.value.replace(/,/g,""));if(!isNaN(n))S[key]=clamp(key,n);inp.value=comma?fmtC(S[key]):S[key];render();});
+}
+function bindSliderNum(inputId,wrapId,sliderId,key){
+  const inp=document.getElementById(inputId),wrap=document.getElementById(wrapId),sl=document.getElementById(sliderId);
+  inp.value=S[key]; sl.value=S[key];
+  wrap.addEventListener("focusin",()=>wrap.classList.add("focused"));
+  wrap.addEventListener("focusout",()=>wrap.classList.remove("focused"));
+  inp.addEventListener("blur",()=>{const n=parseFloat(inp.value);if(!isNaN(n)){S[key]=n;sl.value=n;}inp.value=S[key];render();});
+  sl.addEventListener("input",()=>{S[key]=parseFloat(sl.value);inp.value=S[key];render();});
+}
+function bindSegment(id,cb){
+  document.getElementById(id).querySelectorAll("button").forEach(b=>{
+    b.addEventListener("click",()=>{document.getElementById(id).querySelectorAll("button").forEach(x=>x.classList.remove("active"));b.classList.add("active");cb(b.dataset.v);render();});
+  });
+}
+
+/* ════════ GLOBAL ACTIONS ════════ */
+function pickCity(c){
+  S.city=c;S.price=c.pr;S.rent=c.rn;S.stampPct=c.sd;S.maintAmt=c.mt;S.appre=c.ap;
+  document.getElementById("cityInput").value=c.l;
+  document.getElementById("cityDropdown").classList.remove("open");
+  document.getElementById("popularChips").style.display="none";
+  document.getElementById("priceInput").value=fmtC(c.pr);
+  document.getElementById("rentInput").value=fmtC(c.rn);
+  document.getElementById("appreInput").value=c.ap;
+  document.getElementById("appreSlider").value=c.ap;
+  document.getElementById("stampInput").value=c.sd;
+  document.getElementById("maintInput").value=fmtC(c.mt);
+  document.querySelectorAll("#popularChips .chip").forEach(b=>b.classList.toggle("active",b.textContent===c.l));
+  render();
+}
+function setRegime(v){
+  S.regime=v;
+  document.getElementById("regimeNew").classList.toggle("active",v==="new");
+  document.getElementById("regimeOld").classList.toggle("active",v==="old");
+  document.getElementById("oldRegimeSection").style.display=v==="old"?"block":"none";
+  render();
+}
+function setVal(key,val){
+  S[key]=val;
+  const inputEl=document.getElementById(key+"Input");
+  const sliderEl=document.getElementById(key+"Slider");
+  if(inputEl)inputEl.value=val;
+  if(sliderEl)sliderEl.value=val;
+  render();
+}
+
+document.addEventListener("DOMContentLoaded",init);
+// Expose to window for inline onclick handlers
+window.setVal = setVal;
+window.setRegime = setRegime;
+window.pickCity = pickCity;
+})();
+</script>
+</body>
+</html>
