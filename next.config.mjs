@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "framerusercontent.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "/**",
+      },
     ],
   },
 };

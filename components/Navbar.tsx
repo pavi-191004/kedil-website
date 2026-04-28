@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const CALCULATORS = [
  { label: "Prepay vs Invest Calculator" },
@@ -81,7 +82,6 @@ export default function Navbar() {
                           className="w-full text-left px-4 py-2.5 flex flex-col gap-0.5 hover:bg-gray-50 transition-colors duration-100 cursor-pointer"
                         >
                           <span className="text-[0.875rem] font-medium text-gray-800">{item.label}</span>
-                          <span className="text-[0.75rem] text-gray-400">{item.desc}</span>
                         </button>
                       ))}
                     </div>
@@ -89,14 +89,9 @@ export default function Navbar() {
                 )}
               </div>
 
-              <a
-                href="https://www.kedil.money/blog"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link"
-              >
+              <Link href="/blog" className="nav-link">
                 Blog
-              </a>
+              </Link>
             </nav>
 
             {/* Desktop CTA */}
@@ -150,14 +145,12 @@ export default function Navbar() {
 
           <div className="my-2 h-px bg-gray-100" />
 
-          <a
-            href="https://www.kedil.money/blog"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/blog"
             className="px-1 py-2 text-[0.9rem] text-gray-700 font-medium hover:text-gray-900 transition-colors"
           >
             Blog
-          </a>
+          </Link>
 
           <div className="my-2 h-px bg-gray-100" />
 
