@@ -98,22 +98,22 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <a
+              <Link
                 href="https://app.kedil.money/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-link"
               >
                 Login
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://app.kedil.money/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-5 py-2 rounded-full bg-[#22c55e] text-white text-[0.875rem] font-medium tracking-wide hover:bg-[#16a34a] transition-colors duration-200 shadow-sm"
               >
                 Sign up
-              </a>
+              </Link>
             </div>
 
             {/* Hamburger */}
@@ -158,22 +158,22 @@ export default function Navbar() {
 
           <div className="my-2 h-px bg-gray-100" />
 
-          <a
+          <Link
             href="https://app.kedil.money/"
             target="_blank"
             rel="noopener noreferrer"
             className="px-1 py-2 text-[0.9rem] text-gray-700 font-medium hover:text-gray-900 transition-colors"
           >
             Login
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://app.kedil.money/"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 w-full text-center px-5 py-2.5 rounded-full bg-[#22c55e] text-white text-[0.9rem] font-medium hover:bg-[#16a34a] transition-colors"
           >
             Sign up
-          </a>
+          </Link>
         </div>
       )}
     </header>
