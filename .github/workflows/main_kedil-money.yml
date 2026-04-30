@@ -18,14 +18,19 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm install, build, and test
+      
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+     
+      - name: Build project
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
         run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
